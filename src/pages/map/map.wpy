@@ -1,0 +1,92 @@
+<style lang="less">
+.image_map {
+  width: 750rpx;
+}
+.info_icon {
+  position: fixed;
+  bottom: 6px;
+  right: 23px;
+}
+</style>
+<template>
+  <view class="container">
+    <image class="image_map"
+           src="{{ src }}" 
+           mode="widthFix">
+    </image>
+    <van-icon class="info_icon"
+          name="map-marked"
+          size="32px"
+          custom-class="icon"
+          color="#E53935"
+          @tap="btnShowPopup()"
+    />
+    <van-popup show="{{ show.popup }}"
+               position="bottom"
+               custom-style="height: 20%"
+               @close="btnHidePopup()">
+      <van-cell title="Address"
+                use-label-slot
+                border="{{ false }}">
+        <view slot="label">
+          <view>
+            <text class="mr-3 font-cyan font-size-24">☎</text>
+            <text class="font-size-24">{{ addr.phone }}</text>
+          </view>
+          <view>
+            <text class="mr-3 font-red font-size-24">〒</text>
+            <text class="font-size-24">{{ addr.postcode }}</text>
+          </view>
+          <view>
+            <text class="mr-3">　</text>
+            <text class="font-size-24">{{ addr.address }}</text>
+          </view>
+        </view>
+      </van-cell>
+    </van-popup>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+
+  export default class Index extends wepy.page {
+    config = {
+      navigationBarTitleText: 'ShopMap',
+      usingComponents: {
+        'van-cell': './../../components/vant/cell/index',
+        'van-icon': './../../components/vant/icon/index',
+        'van-popup': './../../components/vant/popup/index'
+      }
+    }
+
+    data = {
+      src: './wfg_map.jpg',
+      addr: {
+        postcode: '104-0061',
+        phone: '03-3572-6811',
+        address: '東京都中央区銀座5丁目6－6'
+      },
+      show: {
+        popup: false
+      }
+    }
+
+    methods = {
+      btnShowPopup() {
+        let vm = this
+        vm.show.popup = true
+        vm.$apply()
+      },
+      btnHidePopup() {
+        let vm = this
+        vm.show.popup = false
+        vm.$apply()
+      }
+    }
+
+    onLoad() {
+      console.log('onLoad')
+    }
+  }
+</script>

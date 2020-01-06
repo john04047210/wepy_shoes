@@ -1,0 +1,68 @@
+<style lang="less">
+.container {
+  height: 100%;
+  width: 750rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.mr-3 {
+  margin-right: 3px;
+}
+.font-red {
+  color: #D50000;
+}
+.font-cyan {
+  color: #00E5FF;
+}
+.font-size-24 {
+  font-size: 24rpx;
+  line-height: 24rpx;
+}
+</style>
+
+<script>
+import wepy from 'wepy'
+import 'wepy-async-function'
+
+export default class extends wepy.app {
+  config = {
+    pages: [
+      'pages/index',
+      'pages/map/map'
+    ],
+    window: {
+      backgroundTextStyle: 'light',
+      navigationBarBackgroundColor: '#fff',
+      navigationBarTitleText: 'WeChat',
+      navigationBarTextStyle: 'black'
+    },
+    tabBar: {
+      color: '#EFEBE9',
+      selectedColor: '#757575',
+      backgroundColor: '#FAFAFA',
+      list: [{
+        pagePath: 'pages/index',
+        text: 'index'
+      }, {
+        pagePath: 'pages/map/map',
+        iconPath: 'images/tab/location.png',
+        selectedIconPath: 'images/tab/location-selected.png',
+        text: 'Map'
+      }]
+    }
+  }
+
+  onLaunch() {
+    console.log('on launch')
+  }
+
+  constructor () {
+    super()
+    this.use('requestfix')
+    this.use('promisify')
+  }
+}
+</script>
