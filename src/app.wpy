@@ -11,6 +11,9 @@
 .mr-3 {
   margin-right: 3px;
 }
+.mb-2 {
+  margin-bottom: 2px;
+}
 .font-red {
   color: #D50000;
 }
@@ -29,9 +32,17 @@ import 'wepy-async-function'
 
 export default class extends wepy.app {
   config = {
+    usingComponents: {
+      'van-card': './components/vant/card/index',
+      'van-cell': './components/vant/cell/index',
+      'van-icon': './components/vant/icon/index',
+      'van-popup': './components/vant/popup/index',
+      'van-tag': './components/vant/tag/index'
+    },
     pages: [
       'pages/index',
-      'pages/map/map'
+      'pages/map/map',
+      'pages/coupon/coupon'
     ],
     window: {
       backgroundTextStyle: 'light',
@@ -40,17 +51,23 @@ export default class extends wepy.app {
       navigationBarTextStyle: 'black'
     },
     tabBar: {
-      color: '#EFEBE9',
-      selectedColor: '#757575',
-      backgroundColor: '#FAFAFA',
+      color: '#e6e6e6',
+      selectedColor: '#1296db',
       list: [{
         pagePath: 'pages/index',
-        text: 'index'
+        iconPath: 'images/tab/shoes.png',
+        selectedIconPath: 'images/tab/shoes_active.png',
+        text: 'Product'
       }, {
         pagePath: 'pages/map/map',
         iconPath: 'images/tab/location.png',
-        selectedIconPath: 'images/tab/location-selected.png',
+        selectedIconPath: 'images/tab/location_active.png',
         text: 'Map'
+      }, {
+        pagePath: 'pages/coupon/coupon',
+        iconPath: 'images/tab/coupon.png',
+        selectedIconPath: 'images/tab/coupon_active.png',
+        text: 'Coupon'
       }]
     }
   }

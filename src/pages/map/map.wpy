@@ -1,8 +1,8 @@
 <style lang="less">
-.image_map {
+.image-map {
   width: 750rpx;
 }
-.info_icon {
+.info-icon {
   position: fixed;
   bottom: 6px;
   right: 23px;
@@ -10,11 +10,15 @@
 </style>
 <template>
   <view class="container">
-    <image class="image_map"
-           src="{{ src }}" 
+    <image class="image-map"
+           src="{{ entrance_src }}" 
            mode="widthFix">
     </image>
-    <van-icon class="info_icon"
+    <image class="image-map"
+           src="{{ map_src }}" 
+           mode="widthFix">
+    </image>
+    <van-icon class="info-icon"
           name="map-marked"
           size="32px"
           custom-class="icon"
@@ -50,18 +54,14 @@
 <script>
   import wepy from 'wepy'
 
-  export default class Index extends wepy.page {
+  export default class ShopMap extends wepy.page {
     config = {
-      navigationBarTitleText: 'ShopMap',
-      usingComponents: {
-        'van-cell': './../../components/vant/cell/index',
-        'van-icon': './../../components/vant/icon/index',
-        'van-popup': './../../components/vant/popup/index'
-      }
+      navigationBarTitleText: 'ShopMap'
     }
 
     data = {
-      src: './wfg_map.jpg',
+      map_src: './wfg_map.jpg',
+      entrance_src: './entrance.jpg',
       addr: {
         postcode: '104-0061',
         phone: '03-3572-6811',

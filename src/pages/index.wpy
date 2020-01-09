@@ -2,19 +2,43 @@
 </style>
 <template>
   <view class="container">
-    Hello world
+    <repeat for="{{ shoes }}" key="id" index="index" item="shoe">
+      <van-card class="mb-2"
+                num="1"
+                price="{{ shoe.price.value }}"
+                title="{{ shoe.title }}"
+                desc="{{ shoe.desc }}"
+                thumb="{{ shoe.image }}">
+        <view slot="tags" wx:if="{{ shoe.tags }}">
+          <repeat for="{{ shoe.tags }}" key="*this" index="index" item="tag">
+            <van-tag class="mr-3" round plain type="warning">{{ tag }}</van-tag>
+          </repeat>
+        </view>
+      </van-card>
+    </repeat>
   </view>
 </template>
 
 <script>
   import wepy from 'wepy'
+  import api from './../api/api'
 
   export default class Index extends wepy.page {
     config = {
-      navigationBarTitleText: 'index'
+      navigationBarTitleText: 'Product'
     }
+
+    data = {
+      shoes: []
+    }
+
     onLoad() {
       console.log('onLoad')
+      let vm = this
+      api.getProductList().then((success) => {
+        vm.shoes = success
+        vm.$apply()
+      })
     }
   }
 </script>
