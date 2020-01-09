@@ -11,6 +11,12 @@
 .mr-3 {
   margin-right: 3px;
 }
+.mr-4 {
+  margin-right: 4px;
+}
+.mr-5 {
+  margin-right: 5px;
+}
 .mb-2 {
   margin-bottom: 2px;
 }
@@ -23,6 +29,13 @@
 .font-size-24 {
   font-size: 24rpx;
   line-height: 24rpx;
+}
+.font-size-26 {
+  font-size: 26rpx;
+  line-height: 26rpx;
+}
+.text-center {
+  horizontal-align: center;
 }
 </style>
 

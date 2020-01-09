@@ -27,23 +27,39 @@
     />
     <van-popup show="{{ show.popup }}"
                position="bottom"
-               custom-style="height: 20%"
+               custom-style="height: 30%"
                @close="btnHidePopup()">
-      <van-cell title="Address"
+      <van-cell title="住所"
                 use-label-slot
                 border="{{ false }}">
         <view slot="label">
-          <view>
-            <text class="mr-3 font-cyan font-size-24">☎</text>
-            <text class="font-size-24">{{ addr.phone }}</text>
+          <view class="text-center">
+            <van-icon class="mr-3" name="phone" color="red" size="14" />
+            <text class="font-size-26">{{ addr.phone }}</text>
           </view>
-          <view>
-            <text class="mr-3 font-red font-size-24">〒</text>
-            <text class="font-size-24">{{ addr.postcode }}</text>
+          <view class="text-center">
+            <van-icon class="mr-3" name="clock" color="red" size="14" />
+            <text class="font-size-26">11:00-20:00</text>
           </view>
-          <view>
-            <text class="mr-3">　</text>
-            <text class="font-size-24">{{ addr.address }}</text>
+          <view class="text-center">
+            <text class="mr-5 font-size-26">　</text>
+            <text class="font-size-26">無休（年末年始除く）</text>
+          </view>
+          <view class="text-center">
+            <text class="mr-3 font-red font-size-26">〒</text>
+            <text class="font-size-26">{{ addr.postcode }}</text>
+          </view>
+          <view class="text-center">
+            <van-icon class="mr-3" name="shop-collect" color="green" size="14" />
+            <text class="font-size-26">{{ addr.address }}</text>
+          </view>
+          <view class="text-center">
+            <text class="mr-4 font-size-26">　</text>
+            <text class="font-size-26">銀座駅A1出口 徒歩1分</text>
+          </view>
+          <view class="text-center">
+            <text class="mr-4 font-size-26">　</text>
+            <text class="font-size-26">東銀座駅 徒歩10分</text>
           </view>
         </view>
       </van-cell>
@@ -65,7 +81,7 @@
       addr: {
         postcode: '104-0061',
         phone: '03-3572-6811',
-        address: '東京都中央区銀座5丁目6－6'
+        address: '東京都中央区銀座5丁目6－6 すずらん通り'
       },
       show: {
         popup: false
