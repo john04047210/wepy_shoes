@@ -1,0 +1,114 @@
+<style lang="less">
+.swiper-image {
+  width: 750rpx;
+  height: 280px;
+}
+.full-width {
+  width: 750rpx;
+}
+.product-title {
+  line-height: 18px;
+  font-size: 18px;
+  font-weight: bold;
+}
+</style>
+<template>
+  <view class="container">
+    <!-- swiper start -->
+    <view class="page-section page-section-spacing swiper swiper-image">
+      <swiper class="swiper-image" indicator-dots="{{ true }}" autoplay="{{ true }}" circular="{{ true }}">
+        <repeat for="{{ detail.swiper_images }}" key="*this" index="index" item="swiper_image">
+          <swiper-item>
+            <image class="swiper-image"
+                  src="{{ swiper_image }}" 
+                  mode="widthFix">
+            </image>
+          </swiper-item>
+        </repeat>
+      </swiper>
+    </view><!-- swiper end -->
+
+    <van-cell class="product-title" title="{{ detail.title }}" border="{{ false }}"/>
+    <van-cell class="product-desc" title="{{ detail.desc }}" border="{{ false }}"/>
+    <van-divider />
+
+    <!-- product-prop start -->
+    <view class="full-width" @touchstart="touchStart" @touchend="touchEnd">
+    <van-panel class="product-prop full-width" title="Detail">
+      <repeat for="{{ detail.prop }}" key="prop.title" index="index" item="prop">
+        <van-cell title="{{ prop.title }}" value="{{ prop.value }}" border="{{ true }}"/>
+      </repeat>
+    </van-panel><!-- product-prop end -->
+    </view>
+  </view>
+</template>
+
+<script>
+  import wepy from 'wepy'
+  import api from './../../api/api'
+
+  export default class Product extends wepy.page {
+    config = {
+      navigationBarTitleText: 'ShoesDetail'
+    }
+
+    data = {
+      loading: true,
+      detail: {}
+    }
+
+    getDirection(x, y) {
+      const MIN_DISTANCE = 10
+      if (x > y && x > MIN_DISTANCE) {
+        return 'horizontal'
+      }
+      if (y > x && y > MIN_DISTANCE) {
+        return 'vertical'
+      }
+      return ''
+    }
+    resetTouchStatus() {
+      this.direction = ''
+      this.deltaX = 0
+      this.deltaY = 0
+      this.offsetX = 0
+      this.offsetY = 0
+    }
+
+    methods = {
+      touchStart(event) {
+        this.resetTouchStatus()
+        const touch = event.touches[0]
+        this.startX = touch.clientX
+        this.startY = touch.clientY
+      },
+      touchEnd(event) {
+        const touch = event.touches[0]
+        this.deltaX = touch.clientX - this.startX
+        this.deltaY = touch.clientY - this.startY
+        this.offsetX = Math.abs(this.deltaX)
+        this.offsetY = Math.abs(this.deltaY)
+        this.direction = this.direction || this.getDirection(this.offsetX, this.offsetY)
+        if (this.direction === 'vertical') {
+          wepy.navigateBack()
+        }
+      }
+    }
+
+    mixins = []
+
+    onLoad() {
+      console.log('onLoad')
+      let vm = this
+      wepy.showLoading({
+        title: 'Loading...',
+        mask: true
+      })
+      api.getProductDetail(1).then((success) => {
+        vm.detail = success
+        vm.$apply()
+        wepy.hideLoading()
+      })
+    }
+  }
+</script>

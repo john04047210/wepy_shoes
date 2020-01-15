@@ -20,6 +20,9 @@
 .mb-2 {
   margin-bottom: 2px;
 }
+.pl-5 {
+  padding-left: 5px;
+}
 .font-red {
   color: #D50000;
 }
@@ -48,12 +51,16 @@ export default class extends wepy.app {
     usingComponents: {
       'van-card': './components/vant/card/index',
       'van-cell': './components/vant/cell/index',
+      'van-cell-group': './components/vant/cell-group/index',
+      'van-divider': './components/vant/divider/index',
       'van-icon': './components/vant/icon/index',
+      'van-panel': './components/vant/panel/index',
       'van-popup': './components/vant/popup/index',
       'van-tag': './components/vant/tag/index'
     },
     pages: [
       'pages/index',
+      'pages/product/product',
       'pages/map/map',
       'pages/coupon/coupon'
     ],

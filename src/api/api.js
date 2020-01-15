@@ -40,6 +40,10 @@ export default class api {
       resolve({
         id: product_id,
         image: 'http://www.wfg-net.com/images/product/PT0901I/01.jpg',
+        swiper_images: [
+          'http://www.wfg-net.com/images/product/PT0901I/01.jpg',
+          'http://www.wfg-net.com/images/product/PT0002B/07.jpg'
+        ],
         title: 'PERFETTO Hole cut & Leather sole, Bordeaux',
         price: {
           tax: true,

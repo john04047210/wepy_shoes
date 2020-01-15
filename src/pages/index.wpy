@@ -8,7 +8,8 @@
                 price="{{ shoe.price.value }}"
                 title="{{ shoe.title }}"
                 desc="{{ shoe.desc }}"
-                thumb="{{ shoe.image }}">
+                thumb="{{ shoe.image }}"
+                @tap="show_product({{ shoe.id }})">
         <view slot="tags" wx:if="{{ shoe.tags }}">
           <repeat for="{{ shoe.tags }}" key="*this" index="index" item="tag">
             <van-tag class="mr-3" round plain type="warning">{{ tag }}</van-tag>
@@ -30,6 +31,14 @@
 
     data = {
       shoes: []
+    }
+
+    methods = {
+      show_product(ShoeId) {
+        wepy.navigateTo({
+          url: `./product/product?shoe_id=${ShoeId}`
+        })
+      }
     }
 
     onLoad() {
