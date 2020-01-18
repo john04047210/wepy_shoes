@@ -35,7 +35,7 @@
     <!-- product-prop start -->
     <view class="full-width" @touchstart="touchStart" @touchend="touchEnd">
     <van-panel class="product-prop full-width" title="Detail">
-      <repeat for="{{ detail.prop }}" key="prop.title" index="index" item="prop">
+      <repeat for="{{ detail.prop }}" key="title" index="index" item="prop">
         <van-cell title="{{ prop.title }}" value="{{ prop.value }}" border="{{ true }}"/>
       </repeat>
     </van-panel><!-- product-prop end -->
