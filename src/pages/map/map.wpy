@@ -12,12 +12,10 @@
   <view class="container">
     <image class="image-map"
            src="{{ entrance_src }}" 
-           mode="widthFix">
-    </image>
+           mode="widthFix"/>
     <image class="image-map"
            src="{{ map_src }}" 
-           mode="widthFix">
-    </image>
+           mode="widthFix"/>
     <van-icon class="info-icon"
           name="map-marked"
           size="32px"

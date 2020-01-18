@@ -22,6 +22,7 @@ export default class api {
           tax: true,
           value: '56,100'
         },
+        tags: ['日本製', 'カーフ'],
         desc: 'ペルフェット セミブローグ & レザーソール, グリーン'
       }, {
         id: 3,
@@ -31,6 +32,7 @@ export default class api {
           tax: true,
           value: '56,100'
         },
+        tags: ['日本製', 'カーフ'],
         desc: 'ペルフェット セミブローグ & レザーソール, ブラウン'
       }, {
         id: 4,
@@ -40,6 +42,7 @@ export default class api {
           tax: true,
           value: '40,700'
         },
+        tags: ['日本製', 'キップ'],
         desc: 'ORIENTAL ダブルモンク & レザーソール, ブラウン'
       }, {
         id: 5,
@@ -49,6 +52,7 @@ export default class api {
           tax: true,
           value: '40,700'
         },
+        tags: ['日本製', 'スウェード'],
         desc: 'ORIENTAL シングルモンク & レザーソール, ダークブラウン'
       }, {
         id: 6,
@@ -58,6 +62,7 @@ export default class api {
           tax: true,
           value: '40,700'
         },
+        tags: ['日本製', 'スウェード'],
         desc: 'ORIENTAL シングルモンク & レザーソール, ブラック'
       }, {
         id: 7,
@@ -67,6 +72,7 @@ export default class api {
           tax: true,
           value: '40,700'
         },
+        tags: ['日本製', 'キップ'],
         desc: 'ORIENTAL セミブローグ & レザーソール, ブラック'
       }, {
         id: 8,
@@ -76,6 +82,7 @@ export default class api {
           tax: true,
           value: '40,700'
         },
+        tags: ['日本製', 'キップ'],
         desc: 'ORIENTAL ストレートチップ & レザーソール, ブラック'
       }])
     })

@@ -21,8 +21,7 @@
           <swiper-item>
             <image class="swiper-image"
                   src="{{ swiper_image }}" 
-                  mode="widthFix">
-            </image>
+                  mode="widthFix" />
           </swiper-item>
         </repeat>
       </swiper>
@@ -33,12 +32,12 @@
     <van-divider />
 
     <!-- product-prop start -->
-    <view class="full-width" @touchstart="touchStart" @touchend="touchEnd">
-    <van-panel class="product-prop full-width" title="Detail">
-      <repeat for="{{ detail.prop }}" key="title" index="index" item="prop">
-        <van-cell title="{{ prop.title }}" value="{{ prop.value }}" border="{{ true }}"/>
-      </repeat>
-    </van-panel><!-- product-prop end -->
+    <view class="full-width">
+      <van-panel class="product-prop full-width" title="Detail">
+        <repeat for="{{ detail.prop }}" key="title" index="index" item="prop">
+          <van-cell title="{{ prop.title }}" value="{{ prop.value }}" border="{{ true }}"/>
+        </repeat>
+      </van-panel><!-- product-prop end -->
     </view>
   </view>
 </template>
@@ -57,54 +56,20 @@
       detail: {}
     }
 
-    getDirection(x, y) {
-      const MIN_DISTANCE = 10
-      if (x > y && x > MIN_DISTANCE) {
-        return 'horizontal'
-      }
-      if (y > x && y > MIN_DISTANCE) {
-        return 'vertical'
-      }
-      return ''
-    }
-    resetTouchStatus() {
-      this.direction = ''
-      this.deltaX = 0
-      this.deltaY = 0
-      this.offsetX = 0
-      this.offsetY = 0
-    }
-
     methods = {
-      touchStart(event) {
-        this.resetTouchStatus()
-        const touch = event.touches[0]
-        this.startX = touch.clientX
-        this.startY = touch.clientY
-      },
-      touchEnd(event) {
-        const touch = event.touches[0]
-        this.deltaX = touch.clientX - this.startX
-        this.deltaY = touch.clientY - this.startY
-        this.offsetX = Math.abs(this.deltaX)
-        this.offsetY = Math.abs(this.deltaY)
-        this.direction = this.direction || this.getDirection(this.offsetX, this.offsetY)
-        if (this.direction === 'vertical') {
-          wepy.navigateBack()
-        }
-      }
     }
 
     mixins = []
 
-    onLoad() {
+    onLoad(options) {
       console.log('onLoad')
       let vm = this
       wepy.showLoading({
         title: 'Loading...',
         mask: true
       })
-      api.getProductDetail(1).then((success) => {
+      let shoeId = options.shoe_id
+      api.getProductDetail(shoeId).then((success) => {
         vm.detail = success
         vm.$apply()
         wepy.hideLoading()

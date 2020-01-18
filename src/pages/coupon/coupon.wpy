@@ -12,8 +12,7 @@
     <repeat for="{{coupons}}" key="id" index="index" item="coupon">
       <image class="image-coupon"
              src="{{ coupon.src }}" 
-             mode="widthFix">
-      </image>
+             mode="widthFix"/>
     </repeat>
   </view>
 </template>
