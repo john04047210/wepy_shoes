@@ -1,4 +1,8 @@
 <style lang="less">
+.image-swiper {
+  width: 750rpx;
+  margin-bottom: 10px;
+}
 </style>
 <template>
   <view class="container">
@@ -42,7 +46,7 @@
     }
 
     onLoad() {
-      console.log('onLoad')
+      console.log('onLoad index')
       let vm = this
       api.getProductList().then((success) => {
         vm.shoes = success

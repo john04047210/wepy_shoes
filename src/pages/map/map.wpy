@@ -1,6 +1,23 @@
 <style lang="less">
+.swiper-style {
+  width: 740rpx;
+  height: 540rpx;
+}
+.image-swiper {
+  width: 740rpx;
+}
+.logo-style {
+  width: 70rpx;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+}
+.float-center {
+  display: flex;
+  justify-content: center;
+}
 .image-map {
-  width: 750rpx;
+  width: 740rpx;
 }
 .info-icon {
   position: fixed;
@@ -10,6 +27,21 @@
 </style>
 <template>
   <view class="container">
+    <swiper class="swiper-style" indicator-dots="{{ true }}" circular="{{ true }}"
+            autoplay="{{ true }}" interval="{{ 6000 }}" duration="{{ 500 }}">
+      <repeat for="{{ swiper_items }}" key="id" index="index" item="item">
+        <swiper-item>
+          <view class="float-center">
+            <image class="image-swiper"
+                  src="{{ item.src }}" 
+                  mode="widthFix"/>
+          </view>
+          <image class="logo-style"
+                 src="{{ item.logo }}" 
+                 mode="widthFix"/>
+        </swiper-item>
+      </repeat>
+    </swiper>
     <image class="image-map"
            src="{{ entrance_src }}" 
            mode="widthFix"/>
@@ -67,6 +99,7 @@
 
 <script>
   import wepy from 'wepy'
+  import api from './../../api/api'
 
   export default class ShopMap extends wepy.page {
     config = {
@@ -74,6 +107,8 @@
     }
 
     data = {
+      swiper_items: [],
+      logo_src: './wfg_logo.png',
       map_src: './wfg_map.jpg',
       entrance_src: './entrance.jpg',
       addr: {
@@ -100,7 +135,12 @@
     }
 
     onLoad() {
-      console.log('onLoad')
+      console.log('onLoad map')
+      let vm = this
+      api.getSwiperItems().then((success) => {
+        vm.swiper_items = success
+        vm.$apply()
+      })
     }
   }
 </script>

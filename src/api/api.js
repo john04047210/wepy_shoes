@@ -1,6 +1,31 @@
 import wepy from 'wepy'
 
 export default class api {
+  static async getSwiperItems() {
+    return new Promise((resolve, reject) => {
+      resolve([{
+        id: 1,
+        src: 'http://www.wfg-net.com/images/top/header-visual01.jpg',
+        logo: 'http://www.wfg-net.com/images/common/header-visual-logo.png'
+      }, {
+        id: 2,
+        src: 'http://www.wfg-net.com/images/top/header-visual02.jpg',
+        logo: 'http://www.wfg-net.com/images/common/header-visual-logo.png'
+      }, {
+        id: 3,
+        src: 'http://www.wfg-net.com/images/top/header-visual03.jpg',
+        logo: 'http://www.wfg-net.com/images/common/header-visual-logo.png'
+      }, {
+        id: 4,
+        src: 'http://www.wfg-net.com/images/top/header-visual04.jpg',
+        logo: 'http://www.wfg-net.com/images/common/header-visual-logo-b.png'
+      }, {
+        id: 5,
+        src: 'http://www.wfg-net.com/images/top/header-visual05.jpg',
+        logo: 'http://www.wfg-net.com/images/common/header-visual-logo-b.png'
+      }])
+    });
+  }
   static async getProductList() {
     return new Promise((resolve, reject) => {
       resolve([{

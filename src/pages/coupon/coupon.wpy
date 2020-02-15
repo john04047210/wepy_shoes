@@ -1,7 +1,6 @@
 <style lang="less">
 .image-coupon {
-  width: 750rpx;
-  margin-bottom: 10px;
+  width: 740rpx;
 }
 .float-left {
   float: left;
@@ -28,24 +27,12 @@
     data = {
       coupons: [{
         id: 1,
-        src: './wfg_coupon.png',
+        src: './coupon_001.jpeg',
         desc: 'coupon 001'
       }, {
         id: 2,
-        src: './image_coupon.png',
+        src: './coupon_002.jpeg',
         desc: 'coupon 002'
-      }, {
-        id: 3,
-        src: './coupon_015.png',
-        desc: 'coupon 003'
-      }, {
-        id: 4,
-        src: './coupon_020.png',
-        desc: 'coupon 004'
-      }, {
-        id: 5,
-        src: './coupon_075.png',
-        desc: 'coupon 005'
       }]
     }
 
@@ -53,7 +40,7 @@
     }
 
     onLoad() {
-      console.log('onLoad')
+      console.log('onLoad coupon')
     }
   }
 </script>
